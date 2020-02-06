@@ -53,17 +53,17 @@ style E stroke:#000,stroke-width:4px
 style J stroke:#000,stroke-width:4px
 style P stroke:#000,stroke-width:4px
 ```
-![Diagram](https://mermaidjs.github.io/mermaid-live-editor/#/view/eyJjb2RlIjoiZ3JhcGggVERcbkEoKFN0YXJ0KSkgLS0-IEJbRGV0ZWN0ICouZGVzaWduZXIgZmlsZXNdXG5CIC0tIGZvciBlYWNoICouZGVzaWduZXIuY3MgLS0-IENbRGV0ZWN0IHZhcmlhYmxlc11cbkMgLS0-IER7QXJlIGdyaWRzPGJyLz5wcmVzZW50P31cbkQgLS0gTm8gLS0-IEUoKEVuZCkpXG5EIC0tIFllcyAtLT4gRltDaGVjayBQcm9wQmFnIGluZm9ybWF0aW9uXVxuRiAtLT4gR1tQcm9jZXNzIHZhbHVlcyBhc3NpZ25tZW50c11cbkcgLS0-IEhbQ2hlY2sgaWYgdGhlcmUgYXJlIGdyaWRzIHdpdGg8YnIvPmluY29ycmVjdCBwcm9wZXJ0aWVzIGluIGRlc2lnbmVyXVxuSCAtLT4gSXtBcmUgdGhlcmUgYW55IGdyaWRzPGJyLz50aGF0IG5lZWRzIHRvIGJlPGJyLz5wcm9jZXNzZWQgYWNjb3JkaW5nPGJyLz50byB0aGUgc2V0dGluZ3M_fVxuSSAtLSBObyAtLT4gSigoRW5kKSlcbkkgLS0gWWVzIC0tPiBLW1JlbW92ZSBpbmNvcnJlY3QgbGluZXNdXG5LIC0tPiBMW0FkZCBsaW5lcyB0byB0aGUgZGVzaWduZXI8YnIvPnJlbGF0ZWQgdG8gdGhlICoucmVzeCBmaWxlXVxuTCAtLT4gTVtDYWxjdWxhdGUgbmVjZXNzYXJ5IHZhbHVlc11cbk0gLS0-IE5bUmVwbGFjZSBkZXNpZ25lciBmaWxlXVxuTiAtLT4gT1tVcGRhdGUgcmVzeCBmaWxlXVxuTyAtLT4gUCgoRW5kKSlcbnN0eWxlIEUgc3Ryb2tlOiMwMDAsc3Ryb2tlLXdpZHRoOjRweFxuc3R5bGUgSiBzdHJva2U6IzAwMCxzdHJva2Utd2lkdGg6NHB4XG5zdHlsZSBQIHN0cm9rZTojMDAwLHN0cm9rZS13aWR0aDo0cHgiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9fQ)
+![Diagram](diagram.png)
 
 The tool heavily uses Regular Expressions to read each line and detect the properties. It first detects all the designer files located inside the selected folder (and subfolders). After that, the tool will detect all the variables related to True DB Grids. This includes C1TrueDBGrid, C1TrueDBGridHelper,  C1DataColumn and ValueItem. During this process, the lines will be added to a List. If there are not grids found, the tool will continue with the next form.
 
-After the variables are detected, the tool will check if there grids found have already a property bag in the .resx file. It will be parsed if it's necessary according the tool's settings.
+After the variables are detected, the tool will check if there grids found have already a property bag in the `.resx` file. It will be parsed if it's necessary according the tool's settings.
 
 The tool will create custom Regular Expressions according to the grid variables found and with them, it is going to determine which lines should be processed to check the value assignment of each property. When a line is being processed several Regular Expressions are going to be used to decompose the line to determine where the property belongs.
 
 When the tool finished processing the lines, it will know if there are incorrect lines in the designer files. According to this information, it will check if there are still grids to process according to the tool's settings. Then, it will remove all the incorrect lines present in the designer file.
 
-In the designer file, there should be a line of code that indicates the assignment of the property bag in the .resx file to the corresponding grid. The tool will make sure this line is inserted. Since it is not easy to determine where to insert this line, the tool will place it after the "SuspendLayout();" that is always present in the InitializeComponents() method.
+In the designer file, there should be a line of code that indicates the assignment of the property bag in the .resx file to the corresponding grid. The tool will make sure this line is inserted. Since it is not easy to determine where to insert this line, the tool will place it after the `SuspendLayout();` that is always present in the `InitializeComponent()` method.
 
 Some values that are necessary in the property bag will be calculated or generated, like the indexes of each Display Column or the dimensions of each Split. When this is done, the tool will be ready to replace the designer and .resx files with the updated ones.
 

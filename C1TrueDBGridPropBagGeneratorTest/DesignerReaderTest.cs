@@ -494,7 +494,7 @@ namespace C1TrueDBGridPropBagGeneratorTest
             {
                 designerReader.CheckGridVariables(lines);
                 designerReader.ProcessAllLines(lines);
-            } catch (Exception ex)
+            } catch (Exceptionx)
             {
                 // do nothing
             }
